@@ -1,0 +1,50 @@
+import bannerCoffee from '../../../../assets/coffee-banner.png'
+import { BackgroundContainer, BannerContainer, IconStyle } from './styles'
+import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
+
+export function Banner() {
+    return (
+        <BackgroundContainer>
+        <BannerContainer className='container'>
+            <section>
+                <h1>Encontre o café perfeito
+                    para qualquer hora do dia
+                </h1>
+                <p>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
+        
+                <div>
+                    <span>
+                    <IconStyle backgroundColor='yellowD'>
+                        <ShoppingCart size={16} color="#fAfAfA" weight="fill" />
+                    </IconStyle>
+                        Compra simples e segura
+                    </span>
+
+                    <span>
+                    <IconStyle backgroundColor='grayD'>
+                        <Package size={16} color="#fAfAfA" weight="fill" />
+                    </IconStyle>
+                        Embalagem mantém o café intacto
+                    </span>
+
+                    <span>
+                    <IconStyle backgroundColor='yellow'>
+                        <Timer size={16} color="#fAfAfA" weight="fill" />
+                    </IconStyle>
+                        Entrega rápida e rastreada
+                    </span>
+                   
+                    <span>
+                    <IconStyle backgroundColor='purple'>
+                        <Coffee size={16} color="#fAfAfA" weight="fill" />
+                    </IconStyle>
+                        O café chega fresquinho até você
+                    </span>
+                </div>
+            </section>
+        
+            <img src={bannerCoffee} alt="" />
+        </BannerContainer>
+    </BackgroundContainer>
+    )
+}
