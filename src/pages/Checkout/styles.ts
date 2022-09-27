@@ -31,7 +31,7 @@ export const DeliveryContainer = styled.section`
         padding: 0.75rem;
         border: 1px solid ${props => props.theme['base-button']};
         background: ${props => props.theme['base-input']};
-        color: ${props => props.theme['base-label']};
+        color: ${props => props.theme['base-text']};
         border-radius: 4px;
         font-size: 0.875rem;
         width: 100%;
@@ -53,7 +53,8 @@ export const DeliveryContainer = styled.section`
     }
 
     label {
-        position: relative;
+        display: flex;
+        align-items: center;
         font-size: 0.75rem;
         font-style: italic;
         color: ${props => props.theme['base-label']};

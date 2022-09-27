@@ -1,5 +1,5 @@
-import { Bank, CreditCard, CurrencyDollar, MapPin, MapPinLine, Money } from "phosphor-react";
-import { SelectedCoffeeCard } from "../Home/components/SelectedCoffeeCard";
+import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
+import { SelectedCoffeeCard } from "./components/SelectedCoffeeCard";
 import { AddreesAndPaymentContainer, CheckoutContainer, ConfirmButton, DeliveryContainer, OrderForm, PaymentButtons, PaymentContainer, SelectedCoffees, TableContainer, TextWithIcon } from "./styles";
 
 export function Checkout() {

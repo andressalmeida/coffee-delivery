@@ -12,9 +12,12 @@ export function Header() {
                         <MapPin size={22} color="#8047F8" weight="fill" />
                         São Paulo, SP
                     </span>
-                    <button>
-                        <ShoppingCart size={22} color="#C47F17" weight="fill" />
-                    </button>
+                    <form action="/checkout">
+                        <button type='submit'>
+                            <ShoppingCart size={22} color="#C47F17" weight="fill" />
+                            <span>3</span>
+                        </button>
+                    </form>
                 </nav>
             </div>
         </HeaderContainer>
