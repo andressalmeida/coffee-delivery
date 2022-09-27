@@ -58,6 +58,7 @@ display: flex;
 align-items: center;
 justify-content: flex-start;
 margin-top: 2rem;
+height: 2.375rem;
 
  div {
     display: flex;
@@ -69,6 +70,7 @@ margin-top: 2rem;
         font-size: 1.5rem;
         font-weight: 800;
         font-family: 'Baloo 2';
+        margin-right: 1.5rem;
     }
 
     span {
