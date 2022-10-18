@@ -47,6 +47,7 @@ margin-top: 0.5rem;
     font-size: 0.75rem;
     border-radius: 6px;
     border: none;
+    transition: 0.4s;
 
     :hover {
         background: ${props => props.theme['base-hover']};

@@ -1,23 +1,51 @@
 import { Trash } from 'phosphor-react'
-import tradicional from '../../../../assets/tradicional.png' 
+import { useContext } from 'react'
 import { CountInput } from '../../../../components/CountInput'
+import { CartContext, CartItem } from '../../../../contexts/CartContext'
 import { CountAndTrashContainer, SelectedCoffeeCardContainer } from './styles'
 
-export function SelectedCoffeeCard() {
-    return (
-        <SelectedCoffeeCardContainer>
-            <img src={tradicional} alt="" />
-            <div>
-                <h3>Expresso Tradicional</h3>
-                <CountAndTrashContainer>
-                    <CountInput />
-                    <button>
-                    <Trash size={16} color="#8047F8" />
-                        <span>REMOVER</span>
-                    </button>
-                </CountAndTrashContainer>
-            </div>
-            <span>R$ 9,90</span>
-        </SelectedCoffeeCardContainer>
-    )
+
+interface SelectedCoffeeCartProps {
+    coffee: CartItem
 }
+
+export function SelectedCoffeeCard({ coffee }: SelectedCoffeeCartProps) {
+
+    const totalPrice = coffee.price * coffee.quantity
+    const formattedPrice = totalPrice.toLocaleString('pt-BR', {minimumFractionDigits: 2})
+    const { changeItemQuantity, removeCartItem } = useContext(CartContext)
+  
+    function handleIncrease() {
+        changeItemQuantity(coffee.id, 'increase') 
+            
+    }
+
+    function handleDecrease() {
+        changeItemQuantity(coffee.id, 'decrease') 
+    }
+
+    function handleRemove() {
+        removeCartItem(coffee.id)
+    }
+
+        return (
+            <SelectedCoffeeCardContainer>
+                <img src={`/coffees/${coffee.image}`} alt="" />
+                <div>
+                    <h3>{coffee.name}</h3>
+                    <CountAndTrashContainer>
+                        <CountInput
+                        quantity={coffee.quantity} 
+                        onIncrease={handleIncrease}
+                        onDecrease={handleDecrease}
+                        />
+                        <button>
+                            <Trash size={16} color="#8047F8" />
+                            <span onClick={handleRemove}>REMOVER</span>
+                        </button>
+                    </CountAndTrashContainer>
+                </div>
+                <span>R$ {formattedPrice}</span>
+            </SelectedCoffeeCardContainer>
+        )
+    }

@@ -1,8 +1,21 @@
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
 import { SelectedCoffeeCard } from "./components/SelectedCoffeeCard";
 import { AddreesAndPaymentContainer, CheckoutContainer, ConfirmButton, DeliveryContainer, OrderForm, PaymentButtons, PaymentContainer, SelectedCoffees, TableContainer, TextWithIcon } from "./styles";
 
+const deliveryPrice = 3.5
+
 export function Checkout() {
+    const {cartItems, cartItemsTotal, totalItems} = useContext(CartContext)
+
+    const cartTotal = deliveryPrice + cartItemsTotal
+    const deliveryPriceFormatted = deliveryPrice.toLocaleString('pt-BR', {minimumFractionDigits: 2})
+    const cartTotalFormated = cartTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})
+    const cartItemsTotalFormated = cartItemsTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})
+    
+
+    
     return (
         <CheckoutContainer className="container">
             <AddreesAndPaymentContainer>
@@ -70,32 +83,29 @@ export function Checkout() {
 
                 <SelectedCoffees>
                     <ul>
-                        <li>
-                            <SelectedCoffeeCard />
-                        </li>
-
-                        <li>
-                            <SelectedCoffeeCard />
-                        </li>
-                        
+                    {cartItems.map(item => (
+                        <SelectedCoffeeCard key={item.id} coffee={item}/>
+                    ))}  
                     </ul>
 
                     <div>
                         <TableContainer>
-                            <tr>
-                                <th>Total de Itens</th>
-                                <td>R$47,50</td>
-                            </tr>
-                            <tr>
-                                <th>Entrega</th>
-                                <td>R$3,50</td>
-                            </tr>
-                            <tr >
-                                <th className="total">Total</th>
-                                <td className="total">R$50,00</td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <th>Total de Itens</th>
+                                    <td>R$ {cartItemsTotalFormated}</td>
+                                </tr>
+                                <tr>
+                                    <th>Entrega</th>
+                                    <td>R$ {totalItems >= 1 ? deliveryPriceFormatted : '0,00'} </td>
+                                </tr>
+                                <tr >
+                                    <th className="total">Total</th>
+                                    <td className="total">R$ {totalItems >= 1 ? cartTotalFormated : '0,00'}</td>
+                                </tr>
+                            </tbody>
                         </TableContainer>
-                        <ConfirmButton>CONFIRMAR PEDIDO</ConfirmButton>
+                        <ConfirmButton disabled={totalItems <= 0}>CONFIRMAR PEDIDO</ConfirmButton>
                     </div>
                 </SelectedCoffees>
             </div>

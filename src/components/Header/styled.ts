@@ -38,23 +38,25 @@ button {
     cursor: pointer;
 
     > span {
+        display: none;
+    }
+
+    .countActive {
         position: absolute;
         background: ${(props) => props.theme['yellow-dark']};
         color: ${(props) => props.theme['background']};
-        font-size: 1rem;
+        font-size: 0.75rem;
         font-weight: 700;
         border: none;
         border-radius: 50%;
         display: flex;
         justify-content: center;
+
         padding: 0;
         width: 1.25rem;
         height: 1.25rem;
-        font-size: 1rem;
         margin-top: -42px;
         margin-left: 15px;
-        line-height: 130%;
-
     }
 }
 `

@@ -34,7 +34,12 @@ export const DeliveryContainer = styled.section`
         color: ${props => props.theme['base-text']};
         border-radius: 4px;
         font-size: 0.875rem;
+        transition: 0.4s;
         width: 100%;
+
+        &:focus {
+            border: 1px solid ${props => props.theme['yellow-dark']};
+        }
     }
 
     div {
@@ -106,9 +111,14 @@ button {
     text-align: start;
     align-items: center;
     color: ${props => props.theme['base-text']};
+    transition: 0.4s;
 
-    :hover {
-        background: ${props => props.theme['base-hover']};
+    &:hover {
+        background: ${props => props.theme['base-hover']};    
+    }
+
+    &:active {
+        background: ${props => props.theme['purple-light']}; 
     }
  
 }
@@ -153,9 +163,15 @@ export const ConfirmButton = styled.button`
     font-size: 0.875rem;
     border: none;
     margin-top: 1.5rem;
+    transition: 0.4s;
     
     :hover {
         background: ${props => props.theme['yellow-dark']};
+    }
+
+    &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
     }
 `
 
